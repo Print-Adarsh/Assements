@@ -1,1 +1,10 @@
+Ques--Count how many valid points exist per type (e.g., restaurants, hotels, cafes, museums, 
+parks).
+
+
+// Count valid points per type
+Map<String, Long> countByType = metadata.stream()
+        .collect(Collectors.groupingBy(m -> m.type, Collectors.counting()));
+
+System.out.println("Valid Points Per Type: " + countByType);
 
