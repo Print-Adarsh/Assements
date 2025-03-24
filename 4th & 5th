@@ -1,0 +1,23 @@
+4th ques-- Identify the location with the highest number of reviews. 
+
+
+Metadata maxReviewLocation = metadata.stream()
+        .max(Comparator.comparingInt(m -> m.reviews))
+        .orElse(null);
+
+if (maxReviewLocation != null) {
+    System.out.println("Location with Highest Reviews: " + maxReviewLocation.id + " (" + maxReviewLocation.reviews + " reviews)");
+}
+
+5th ques-- Identify locations with incomplete data if any.(*Bonus point) 
+
+// Identify locations with incomplete data
+List<String> incompleteDataLocations = new ArrayList<>();
+for (Location loc : locations) {
+    boolean hasMetadata = metadata.stream().anyMatch(m -> m.id.equals(loc.id));
+    if (!hasMetadata) {
+        incompleteDataLocations.add(loc.id);
+    }
+}
+
+System.out.println("Locations with Incomplete Data: " + incompleteDataLocations);
